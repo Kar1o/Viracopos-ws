@@ -15,8 +15,6 @@
  */
 package hello;
 
-import java.util.Map;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,6 +27,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import controllers.Application;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -49,7 +48,7 @@ public class HelloWorldConfigurationTests {
 	@Test
 	public void testGreeting() throws Exception {
 		ResponseEntity<String> entity = new TestRestTemplate().getForEntity(
-				"http://localhost:" + this.port + "/", String.class);
+				"http://localhost:" + this.port + "/greeting", String.class);
 		assertEquals(HttpStatus.OK, entity.getStatusCode());
 	}
 
